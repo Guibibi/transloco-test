@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "transloco"
+    }
+  },
+  "defaultProject": "transloco",
+  "cli": {
+    "analytics": "877c1d64-598f-4e3e-a490-a51b684b5bac"
+  }
 }
