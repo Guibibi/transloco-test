@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +15,10 @@ import { TranslocoRootModule } from './transloco/transloco-root.module';
     AppRoutingModule,
     HttpClientModule,
     TranslocoRootModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent],

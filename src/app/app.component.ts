@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,25 @@ import { TranslocoService } from '@ngneat/transloco';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private service: TranslocoService) {}
+  private toastMessage = '';
+  constructor(
+    private service: TranslocoService,
+    private toastr: ToastrService
+  ) {}
+  ngOnInit() {
+    this.getTranslation();
+  }
 
-  ngOnInit() {}
-  title = 'transloco';
+  private getTranslation() {
+    this.service.selectTranslate('toast').subscribe((value) => {
+      console.log(value);
+      return (this.toastMessage = value);
+    });
+  }
 
   change(lang: string) {
     this.service.setActiveLang(lang);
+    this.getTranslation();
+    this.toastr.success(this.toastMessage);
   }
 }
